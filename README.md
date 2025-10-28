@@ -21,23 +21,40 @@ This project uses [uv](https://github.com/astral-sh/uv) for dependency managemen
 ### Prerequisites
 
 - Python >= 3.9
-- uv package manager
+- uv package manager - [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
+
+#### Install uv
+
+**macOS:**
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+**Windows:**
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd competitive-coding-challenges
 ```
 
 2. Create and activate virtual environment:
+
 ```bash
 uv venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 ```
 
 3. Install dependencies:
+
 ```bash
 uv sync
 ```
@@ -45,11 +62,13 @@ uv sync
 ## Usage
 
 Run the main entry point:
+
 ```bash
 python main.py
 ```
 
 Run individual solutions:
+
 ```bash
 python leet_code/easy/two_sum.py
 ```
@@ -57,6 +76,7 @@ python leet_code/easy/two_sum.py
 ## Solutions
 
 ### Easy
+
 - **Two Sum** - Find two numbers that add up to a target value using hash map approach
 
 ## Development
@@ -64,11 +84,13 @@ python leet_code/easy/two_sum.py
 This project uses `ruff` for linting and formatting.
 
 Run linting:
+
 ```bash
 uv run ruff check .
 ```
 
 Format code:
+
 ```bash
 uv run ruff format .
 ```
@@ -76,6 +98,7 @@ uv run ruff format .
 ## Contributing
 
 When adding new solutions:
+
 1. Place them in the appropriate difficulty folder (`easy/`, `medium/`, etc.)
 2. Use descriptive filenames matching the problem name
 3. Include the problem description as a comment at the top
