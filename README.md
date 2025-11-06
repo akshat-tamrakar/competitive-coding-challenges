@@ -21,11 +21,11 @@ This project uses [uv](https://github.com/astral-sh/uv) for dependency managemen
 ### Prerequisites
 
 - Python >= 3.9
-- uv package manager - [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
+- `uv` package manager - [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
 
-#### Install uv
+#### 1. Install uv
 
-**macOS:**
+**Linux and macOS:**
 
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -37,27 +37,31 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-### Installation
-
-1. Clone the repository:
+After installing, you may need to restart your shell or run the command provided by the installer to add `uv` to your `PATH`. For Linux and macOS, this is typically:
 
 ```bash
-git clone <repository-url>
-cd competitive-coding-challenges
+source $HOME/.local/bin/env
 ```
 
-2. Create and activate virtual environment:
+#### 2. Project Installation
 
-```bash
-uv venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-```
+1.  Clone the repository and navigate into the project directory:
 
-3. Install dependencies:
+    ```bash
+    git clone <repository-url>
+    cd competitive-coding-challenges
+    ```
 
-```bash
-uv sync
-```
+2.  Create and activate virtual environment
+
+    ```bash
+    uv venv
+    ```
+
+3. Install the dependencies
+    ```bash
+    uv sync
+    ```
 
 ## Usage
 
@@ -95,6 +99,16 @@ Format code:
 uv run ruff format .
 ```
 
+## Activate the virtual environment manually
+#### On Linux/macOS:
+```bash
+    source .venv/bin/activate
+```
+#### On Windows:
+```bash
+    .venv\Scripts\activate
+```
+
 ## Contributing
 
 When adding new solutions:
@@ -107,3 +121,4 @@ When adding new solutions:
 ## License
 
 [Add your license here]
+
