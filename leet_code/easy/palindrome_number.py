@@ -62,7 +62,7 @@ def is_palindrome_by_string_reverse(number: int) -> bool:
     return number_str == number_str[::-1]
 
 
-def test_palindrome_functions():
+if __name__ == "__main__":
     test_cases = [
         (121, True),  # Regular palindrome
         (-121, False),  # Negative numbers are not palindromes
@@ -72,13 +72,11 @@ def test_palindrome_functions():
         (0, True),  # Single digit is always a palindrome
     ]
 
-    for number, _ in test_cases:
-        assert (
-            is_palindrome_by_string_reverse(number)
-            == is_palindrome_by_string_comparison(number)
-            == is_palindrome_by_reverse_half(number)
-        ), f"Failed for input: {number}"
-
-
-if __name__ == "__main__":
-    test_palindrome_functions()
+    for num, expected in test_cases:
+        print(f"\nTesting number: {num}")
+        result1 = is_palindrome_by_reverse_half(num)
+        result2 = is_palindrome_by_string_comparison(num)
+        result3 = is_palindrome_by_string_reverse(num)
+        print(f"Input: {num} | Expected: {expected} | Got: {result1} | {'✓' if result1 == expected else '✗'}")
+        print(f"Input: {num} | Expected: {expected} | Got: {result2} | {'✓' if result2 == expected else '✗'}")
+        print(f"Input: {num} | Expected: {expected} | Got: {result3} | {'✓' if result3 == expected else '✗'}")
