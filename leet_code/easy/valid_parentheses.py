@@ -1,72 +1,76 @@
 """
-LeetCode Problem #26: Remove Duplicates from Sorted Array
+LeetCode Problem #20: Valid Parentheses
 Difficulty: Easy
-Link: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+Link: https://leetcode.com/problems/valid-parentheses/
 
 Problem Statement:
-Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once.
-The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+1. Open brackets must be closed by the same type of brackets.
+2. Open brackets must be closed in the correct order.
+3. Every close bracket has a corresponding open bracket of the same type.
 
 Example 1:
-Input: nums = [1,1,2] || Output: 2, nums = [1,2,_] || Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
+Input: s = "()" || Output: true
 
 Example 2:
-Input: nums = [0,0,1,1,1,2,2,3,3,4] || Output: 5, nums = [0,1,2,3,4,_,_,_,_,_] || Explanation: Your function should return k = 5.
+Input: s = "()[]{}" || Output: true
+
+Example 3:
+Input: s = "(]" || Output: false
+
+Example 4:
+Input: s = "([])" || Output: true
+
+Example 5:
+Input: s = "([)]" || Output: false
 
 Constraints:
-- 1 <= nums.length <= 3 * 10^4
-- -100 <= nums[i] <= 100
-- nums is sorted in non-decreasing order.
+- 1 <= s.length <= 10^4
+- s consists of parentheses only '()[]{}'.
 """
 
-def remove_duplicates_original(nums: list[int]) -> int:
-    if not nums:
-        return 0
-    
-    k = 1
-    for i in range(1, len(nums)):
-        if nums[i] != nums[k - 1]:
-            nums[k] = nums[i]
-            k += 1
-    return k
 
-def remove_duplicates_set_based(nums: list[int]) -> int:
-    if not nums:
-        return 0
-    
-    seen = set()
-    k = 0
-    for num in nums:
-        if num not in seen:
-            seen.add(num)
-            nums[k] = num
-            k += 1
-    return k
+def valid_parentheses_1(s: str):
+    stack = []
+    pairs = {"(": ")", "[": "]", "{": "}"}
+
+    for char in s:
+        if char in pairs:
+            stack.append(char)
+        elif not stack or pairs[stack.pop()] != char:
+            return False
+
+    return not stack
+
+
+def valid_parentheses_2(s: str):
+    while "()" in s or "[]" in s or "{}" in s:
+        s = s.replace("()", "").replace("[]", "").replace("{}", "")
+    return s == ""
 
 
 if __name__ == "__main__":
-    nums1 = [1, 1, 2]
-    assert remove_duplicates_original(nums1) == 2 and nums1[:2] == [1, 2], "Test case 1 failed"
-    print("✓ Test case 1 passed: [1,1,2] -> k=2, [1,2]")
-    
-    nums2 = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
-    assert remove_duplicates_original(nums2) == 5 and nums2[:5] == [0, 1, 2, 3, 4], "Test case 2 failed"
-    print("✓ Test case 2 passed: [0,0,1,1,1,2,2,3,3,4] -> k=5, [0,1,2,3,4]")
-    
-    nums3 = [1]
-    assert remove_duplicates_original(nums3) == 1 and nums3[:1] == [1], "Test case 3 failed"
-    print("✓ Test case 3 passed: [1] -> k=1, [1]")
-    
-    nums4 = [1, 1, 1, 1, 1]
-    assert remove_duplicates_original(nums4) == 1 and nums4[:1] == [1], "Test case 4 failed"
-    print("✓ Test case 4 passed: [1,1,1,1,1] -> k=1, [1]")
-    
-    nums5 = [1, 2, 3, 4, 5]
-    assert remove_duplicates_original(nums5) == 5 and nums5[:5] == [1, 2, 3, 4, 5], "Test case 5 failed"
-    print("✓ Test case 5 passed: [1,2,3,4,5] -> k=5, [1,2,3,4,5]")
-    
-    nums6 = [1, 1, 2]
-    assert remove_duplicates_set_based(nums6) == 2 and nums6[:2] == [1, 2], "Test case 6 failed"
-    print("✓ Test case 6 passed: set_based method -> k=2, [1,2]")
-    
+    assert valid_parentheses_1("()"), "Test case 1 failed"
+    print("✓ Test case 1 passed: '()' -> True")
+
+    assert valid_parentheses_1("()[]{}"), "Test case 2 failed"
+    print("✓ Test case 2 passed: '()[]{}' -> True")
+
+    assert not valid_parentheses_1("(]"), "Test case 3 failed"
+    print("✓ Test case 3 passed: '(]' -> False")
+
+    assert valid_parentheses_1("([])"), "Test case 4 failed"
+    print("✓ Test case 4 passed: '([])' -> True")
+
+    assert not valid_parentheses_1("([)]"), "Test case 5 failed"
+    print("✓ Test case 5 passed: '([)]' -> False")
+
+    assert valid_parentheses_1("[()]"), "Test case 6 failed"
+    print("✓ Test case 6 passed: '[()]' -> True")
+
+    assert valid_parentheses_2("()"), "Test case 7 failed"
+    print("✓ Test case 7 passed: valid_parentheses_2 method -> True")
+
     print("\n✅ All test cases passed!")

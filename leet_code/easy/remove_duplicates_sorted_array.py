@@ -19,10 +19,11 @@ Constraints:
 - nums is sorted in non-decreasing order.
 """
 
+
 def remove_duplicates_original(nums: list[int]) -> int:
     if not nums:
         return 0
-    
+
     k = 1
     for i in range(1, len(nums)):
         if nums[i] != nums[k - 1]:
@@ -30,10 +31,11 @@ def remove_duplicates_original(nums: list[int]) -> int:
             k += 1
     return k
 
+
 def remove_duplicates_set_based(nums: list[int]) -> int:
     if not nums:
         return 0
-    
+
     seen = set()
     k = 0
     for num in nums:
@@ -45,23 +47,40 @@ def remove_duplicates_set_based(nums: list[int]) -> int:
 
 
 if __name__ == "__main__":
-    test_cases = [
-        [1, 1, 2],
-        [0, 0, 1, 1, 1, 2, 2, 3, 3, 4],
-        [1],
-        [1, 1, 1, 1, 1],
-        [1, 2, 3, 4, 5]
-    ]
-    
-    methods = [
-        ("Two-Pointer", remove_duplicates_original),
-        ("Set-Based", remove_duplicates_set_based),
-    ]
-    
-    for i, test_case in enumerate(test_cases, 1):
-        print(f"\nTest Case {i}: {test_case}")
-        
-        for method_name, method in methods:
-            nums_copy = test_case.copy()
-            k = method(nums_copy)
-            print(f"  {method_name}: k={k}, result={nums_copy[:k]}")
+    nums1 = [1, 1, 2]
+    assert remove_duplicates_original(nums1) == 2 and nums1[:2] == [1, 2], (
+        "Test case 1 failed"
+    )
+    print("✓ Test case 1 passed: [1,1,2] -> k=2, [1,2]")
+
+    nums2 = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+    assert remove_duplicates_original(nums2) == 5 and nums2[:5] == [0, 1, 2, 3, 4], (
+        "Test case 2 failed"
+    )
+    print("✓ Test case 2 passed: [0,0,1,1,1,2,2,3,3,4] -> k=5, [0,1,2,3,4]")
+
+    nums3 = [1]
+    assert remove_duplicates_original(nums3) == 1 and nums3[:1] == [1], (
+        "Test case 3 failed"
+    )
+    print("✓ Test case 3 passed: [1] -> k=1, [1]")
+
+    nums4 = [1, 1, 1, 1, 1]
+    assert remove_duplicates_original(nums4) == 1 and nums4[:1] == [1], (
+        "Test case 4 failed"
+    )
+    print("✓ Test case 4 passed: [1,1,1,1,1] -> k=1, [1]")
+
+    nums5 = [1, 2, 3, 4, 5]
+    assert remove_duplicates_original(nums5) == 5 and nums5[:5] == [1, 2, 3, 4, 5], (
+        "Test case 5 failed"
+    )
+    print("✓ Test case 5 passed: [1,2,3,4,5] -> k=5, [1,2,3,4,5]")
+
+    nums6 = [1, 1, 2]
+    assert remove_duplicates_set_based(nums6) == 2 and nums6[:2] == [1, 2], (
+        "Test case 6 failed"
+    )
+    print("✓ Test case 6 passed: set_based method -> k=2, [1,2]")
+
+    print("\n✅ All test cases passed!")

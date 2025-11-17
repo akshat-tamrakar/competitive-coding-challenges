@@ -1,6 +1,6 @@
 def main():
-    print("Hello from competitive-coding-challenges!")
+    return "Hello from competitive-coding-challenges!"
 
 
 if __name__ == "__main__":
-    main()
+    result = main()

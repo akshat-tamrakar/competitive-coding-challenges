@@ -21,7 +21,6 @@ Constraints:
 """
 
 
-
 def check_palindrome_by_conditions(number: int) -> bool:
     """Helper function to validate palindrome input conditions."""
     # Handle negative numbers and numbers ending with 0
@@ -93,28 +92,27 @@ def test_palindrome_functions():
 
 
 if __name__ == "__main__":
-    assert is_palindrome_by_reverse_half(121) == True, "Test case 1 failed"
+    assert is_palindrome_by_reverse_half(121), "Test case 1 failed"
     print("✓ Test case 1 passed: 121 -> True")
-    
-    assert is_palindrome_by_reverse_half(-121) == False, "Test case 2 failed"
+    assert not is_palindrome_by_reverse_half(-121), "Test case 2 failed"
     print("✓ Test case 2 passed: -121 -> False")
-    
-    assert is_palindrome_by_reverse_half(10) == False, "Test case 3 failed"
+
+    assert not is_palindrome_by_reverse_half(10), "Test case 3 failed"
     print("✓ Test case 3 passed: 10 -> False")
-    
-    assert is_palindrome_by_reverse_half(12321) == True, "Test case 4 failed"
+
+    assert is_palindrome_by_reverse_half(12321), "Test case 4 failed"
     print("✓ Test case 4 passed: 12321 -> True")
-    
-    assert is_palindrome_by_reverse_half(1221) == True, "Test case 5 failed"
+
+    assert is_palindrome_by_reverse_half(1221), "Test case 5 failed"
     print("✓ Test case 5 passed: 1221 -> True")
-    
-    assert is_palindrome_by_reverse_half(0) == True, "Test case 6 failed"
+
+    assert is_palindrome_by_reverse_half(0), "Test case 6 failed"
     print("✓ Test case 6 passed: 0 -> True")
-    
-    assert is_palindrome_by_string_comparison(121) == True, "Test case 7 failed"
+
+    assert is_palindrome_by_string_comparison(121), "Test case 7 failed"
     print("✓ Test case 7 passed: string_comparison method -> True")
-    
-    assert is_palindrome_by_string_reverse(121) == True, "Test case 8 failed"
+
+    assert is_palindrome_by_string_reverse(121), "Test case 8 failed"
     print("✓ Test case 8 passed: string_reverse method -> True")
-    
+
     print("\n✅ All test cases passed!")

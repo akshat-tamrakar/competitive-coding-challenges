@@ -25,6 +25,7 @@ Constraints:
 - -2 * 10^5 <= S <= 2 * 10^5
 """
 
+
 def find_pairs_with_sum(array, target_sum):
     result_pairs = []
     checked_numbers = []
@@ -75,17 +76,28 @@ def pair_sum(array, target_sum):
 if __name__ == "__main__":
     assert pair_sum([1, 2, 3, 4, 5], 5) == [(1, 4), (2, 3)], "Test case 1 failed"
     print("✓ Test case 1 passed: [1,2,3,4,5], target=5 -> [(1,4), (2,3)]")
-    
-    assert pair_sum([2, -3, 3, 3, -2], 0) == [(-3, 3), (-3, 3), (-2, 2)], "Test case 2 failed"
+
+    assert pair_sum([2, -3, 3, 3, -2], 0) == [(-3, 3), (-3, 3), (-2, 2)], (
+        "Test case 2 failed"
+    )
     print("✓ Test case 2 passed: [2,-3,3,3,-2], target=0 -> [(-3,3), (-3,3), (-2,2)]")
-    
-    assert pair_sum([2, -6, 2, 5, 2], 4) == [(2, 2), (2, 2), (2, 2)], "Test case 3 failed"
+
+    assert pair_sum([2, -6, 2, 5, 2], 4) == [(2, 2), (2, 2), (2, 2)], (
+        "Test case 3 failed"
+    )
     print("✓ Test case 3 passed: [2,-6,2,5,2], target=4 -> [(2,2), (2,2), (2,2)]")
-    
+
     assert pair_sum([1, 3, 2, 2], 4) == [(1, 3), (2, 2)], "Test case 4 failed"
     print("✓ Test case 4 passed: [1,3,2,2], target=4 -> [(1,3), (2,2)]")
-    
-    assert pair_sum([1, 1, 1, 1], 2) == [(1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1)], "Test case 5 failed"
+
+    assert pair_sum([1, 1, 1, 1], 2) == [
+        (1, 1),
+        (1, 1),
+        (1, 1),
+        (1, 1),
+        (1, 1),
+        (1, 1),
+    ], "Test case 5 failed"
     print("✓ Test case 5 passed: [1,1,1,1], target=2 -> 6 pairs of (1,1)")
-    
+
     print("\n✅ All test cases passed!")

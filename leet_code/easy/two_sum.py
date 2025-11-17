@@ -49,7 +49,25 @@ class Solution:
 
 
 if __name__ == "__main__":
-    print(Solution().two_sum_1(nums=[2, 7, 11, 15],target= 9))
-    print(Solution().two_sum_2(nums=[2, 7, 11, 15], target=9))
-    print(Solution().two_sum_1(nums=[2, 7, 11, 15], target=9))  # Expected output: [0, 1] (because 2 + 7 = 9)
-    print(Solution().two_sum_2(nums=[3, 2, 4], target=6))
+    solution = Solution()
+
+    assert solution.two_sum_1(nums=[2, 7, 11, 15], target=9) == [0, 1], (
+        "Test case 1 failed"
+    )
+    print("✓ Test case 1 passed: [2,7,11,15], target=9 -> [0,1]")
+
+    assert solution.two_sum_1(nums=[3, 2, 4], target=6) == [1, 2], "Test case 2 failed"
+    print("✓ Test case 2 passed: [3,2,4], target=6 -> [1,2]")
+
+    assert solution.two_sum_1(nums=[3, 3], target=6) == [0, 1], "Test case 3 failed"
+    print("✓ Test case 3 passed: [3,3], target=6 -> [0,1]")
+
+    assert solution.two_sum_2(nums=[2, 7, 11, 15], target=9) == (0, 1), (
+        "Test case 4 failed"
+    )
+    print("✓ Test case 4 passed: two_sum_2 method -> (0,1)")
+
+    assert solution.two_sum_2(nums=[3, 2, 4], target=6) == (1, 2), "Test case 5 failed"
+    print("✓ Test case 5 passed: two_sum_2 method -> (1,2)")
+
+    print("\n✅ All test cases passed!")
