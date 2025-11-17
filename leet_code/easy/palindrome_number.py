@@ -1,10 +1,25 @@
 """
-9 Palindrome Number
-===================
-Given an integer x, return true if x is a palindrome , and false otherwise.
+LeetCode Problem #9: Palindrome Number
+Difficulty: Easy
+Link: https://leetcode.com/problems/palindrome-number/
+
+Problem Statement:
+Given an integer x, return true if x is a palindrome, and false otherwise.
+An integer is a palindrome when it reads the same backward as forward.
+
+Example 1:
+Input: x = 121 || Output: true || Explanation: 121 reads as 121 from left to right and from right to left.
+
+Example 2:
+Input: x = -121 || Output: false || Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+
+Example 3:
+Input: x = 10 || Output: false || Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+
+Constraints:
+- -2^31 <= x <= 2^31 - 1
 """
 
-from printopia import print_return, print_return_info
 
 
 def check_palindrome_by_conditions(number: int) -> bool:
@@ -20,7 +35,6 @@ def check_palindrome_by_conditions(number: int) -> bool:
     return None  # Continue with palindrome check
 
 
-@print_return_info
 def is_palindrome_by_reverse_half(number: int) -> bool:
     if (validation_result := check_palindrome_by_conditions(number)) is not None:
         return validation_result
@@ -37,7 +51,6 @@ def is_palindrome_by_reverse_half(number: int) -> bool:
     return number == reversed_half_number or number == reversed_half_number // 10
 
 
-@print_return_info
 def is_palindrome_by_string_comparison(number: int) -> bool:
     if (validation_result := check_palindrome_by_conditions(number)) is not None:
         return validation_result
@@ -56,13 +69,12 @@ def is_palindrome_by_string_comparison(number: int) -> bool:
     return True
 
 
-@print_return_info
 def is_palindrome_by_string_reverse(number: int) -> bool:
     number_str = str(number)
     return number_str == number_str[::-1]
 
 
-if __name__ == "__main__":
+def test_palindrome_functions():
     test_cases = [
         (121, True),  # Regular palindrome
         (-121, False),  # Negative numbers are not palindromes
@@ -72,11 +84,37 @@ if __name__ == "__main__":
         (0, True),  # Single digit is always a palindrome
     ]
 
-    for num, expected in test_cases:
-        print(f"\nTesting number: {num}")
-        result1 = is_palindrome_by_reverse_half(num)
-        result2 = is_palindrome_by_string_comparison(num)
-        result3 = is_palindrome_by_string_reverse(num)
-        print(f"Input: {num} | Expected: {expected} | Got: {result1} | {'✓' if result1 == expected else '✗'}")
-        print(f"Input: {num} | Expected: {expected} | Got: {result2} | {'✓' if result2 == expected else '✗'}")
-        print(f"Input: {num} | Expected: {expected} | Got: {result3} | {'✓' if result3 == expected else '✗'}")
+    for number, _ in test_cases:
+        assert (
+            is_palindrome_by_string_reverse(number)
+            == is_palindrome_by_string_comparison(number)
+            == is_palindrome_by_reverse_half(number)
+        ), f"Failed for input: {number}"
+
+
+if __name__ == "__main__":
+    assert is_palindrome_by_reverse_half(121) == True, "Test case 1 failed"
+    print("✓ Test case 1 passed: 121 -> True")
+    
+    assert is_palindrome_by_reverse_half(-121) == False, "Test case 2 failed"
+    print("✓ Test case 2 passed: -121 -> False")
+    
+    assert is_palindrome_by_reverse_half(10) == False, "Test case 3 failed"
+    print("✓ Test case 3 passed: 10 -> False")
+    
+    assert is_palindrome_by_reverse_half(12321) == True, "Test case 4 failed"
+    print("✓ Test case 4 passed: 12321 -> True")
+    
+    assert is_palindrome_by_reverse_half(1221) == True, "Test case 5 failed"
+    print("✓ Test case 5 passed: 1221 -> True")
+    
+    assert is_palindrome_by_reverse_half(0) == True, "Test case 6 failed"
+    print("✓ Test case 6 passed: 0 -> True")
+    
+    assert is_palindrome_by_string_comparison(121) == True, "Test case 7 failed"
+    print("✓ Test case 7 passed: string_comparison method -> True")
+    
+    assert is_palindrome_by_string_reverse(121) == True, "Test case 8 failed"
+    print("✓ Test case 8 passed: string_reverse method -> True")
+    
+    print("\n✅ All test cases passed!")
