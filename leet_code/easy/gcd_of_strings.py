@@ -26,11 +26,12 @@ Constraints:
 from math import gcd
 
 
-def gcd_divider(longer, shorter):
-    l, s = len(longer), len(shorter)
-    n = l % s
-    if n == 0:
-        if shorter * (l // s) == longer:
+def gcd_divider(longer_string, shorter_string):
+    longer_length = len(longer_string)
+    shorter_length = len(shorter_string)
+    remainder = longer_length % shorter_length
+    if remainder == 0:
+        if shorter_string * (longer_length // shorter_length) == longer_string:
             return True
         else:
             return False
@@ -38,14 +39,16 @@ def gcd_divider(longer, shorter):
 
 
 def gcd_of_strings_2(str1: str, str2: str) -> str:
-    size = len(str1) >= len(str2)
-    longer, shorter = (str1, str2) if size else (str2, str1)
-    i = len(shorter)
-    while i:
-        s = shorter[:i]
-        if gcd_divider(longer, s) and gcd_divider(shorter, s):
-            return s
-        i -= 1
+    str1_is_longer = len(str1) >= len(str2)
+    longer_string, shorter_string = (str1, str2) if str1_is_longer else (str2, str1)
+    substring_length = len(shorter_string)
+    while substring_length:
+        candidate_divisor = shorter_string[:substring_length]
+        if gcd_divider(longer_string, candidate_divisor) and gcd_divider(
+            shorter_string, candidate_divisor
+        ):
+            return candidate_divisor
+        substring_length -= 1
 
     return ""
 
