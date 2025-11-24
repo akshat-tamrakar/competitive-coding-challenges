@@ -26,27 +26,59 @@ Constraints:
 from math import gcd
 
 
-def gcd_divider(longer_string, shorter_string):
-    longer_length = len(longer_string)
-    shorter_length = len(shorter_string)
-    remainder = longer_length % shorter_length
-    if remainder == 0:
-        if shorter_string * (longer_length // shorter_length) == longer_string:
-            return True
-        else:
+def is_divisor(divisor, longer_string, shorter_string) -> bool:
+    """
+    Check if divisor divides both target strings.
+
+    Time Complexity: O(n + m) where n = len(longer_string), m = len(shorter_string)
+        - String multiplication and comparison for both strings
+    Space Complexity: O(n + m) for creating repeated divisor strings
+    """
+    divisor_length = len(divisor)
+
+    # Check if divisor divides both strings
+    for target_string in (longer_string, shorter_string):
+        target_length = len(target_string)
+        if target_length % divisor_length != 0:
             return False
-    return False
+        repetitions = target_length // divisor_length
+        if divisor * repetitions != target_string:
+            return False
+
+    return True
+
+
+def gcd_of_strings_3(str1: str, str2: str) -> str:
+    """
+    Time Complexity: O(min(n, m) * (n + m)) where n = len(str1), m = len(str2)
+        - Iterates through all possible divisor lengths: O(min(n, m))
+        - Each iteration calls is_divisor which is O(n + m)
+    Space Complexity: O(n + m) for string operations in is_divisor
+    """
+    str1_length, str2_length = len(str1), len(str2)
+    str1_is_longer = str1_length >= str2_length
+    longer_string, shorter_string = (str1, str2) if str1_is_longer else (str2, str1)
+
+    for divisor_length in range(min(str1_length, str2_length), 0, -1):
+        candidate_divisor = shorter_string[:divisor_length]
+        if is_divisor(candidate_divisor, longer_string, shorter_string):
+            return candidate_divisor
+    return ""
 
 
 def gcd_of_strings_2(str1: str, str2: str) -> str:
+    """
+    Time Complexity: O(min(n, m) * (n + m)) where n = len(str1), m = len(str2)
+        - While loop iterates through all possible divisor lengths: O(min(n, m))
+        - Each iteration calls is_divisor which is O(n + m)
+    Space Complexity: O(n + m) for string operations in is_divisor
+    """
     str1_is_longer = len(str1) >= len(str2)
     longer_string, shorter_string = (str1, str2) if str1_is_longer else (str2, str1)
     substring_length = len(shorter_string)
     while substring_length:
         candidate_divisor = shorter_string[:substring_length]
-        if gcd_divider(longer_string, candidate_divisor) and gcd_divider(
-            shorter_string, candidate_divisor
-        ):
+        if is_divisor(candidate_divisor, longer_string, shorter_string):
             return candidate_divisor
         substring_length -= 1
 
@@ -66,7 +98,7 @@ def gcd_of_strings_1(str1: str, str2: str) -> str:
 
 
 def gcd_of_strings(str1: str, str2: str) -> str:
-    return gcd_of_strings_1(str1, str2)
+    return gcd_of_strings_2(str1, str2)
 
 
 if __name__ == "__main__":
