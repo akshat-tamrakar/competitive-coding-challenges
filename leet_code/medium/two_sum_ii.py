@@ -45,17 +45,17 @@ def two_sum(numbers, target):
 if __name__ == "__main__":
     assert two_sum(numbers=[2, 7, 11, 15], target=9) == [1, 2], "Test case 1 failed"
     print("✓ Test case 1 passed: [2,7,11,15], target=9 -> [1,2]")
-    
+
     assert two_sum(numbers=[2, 3, 4], target=6) == [1, 3], "Test case 2 failed"
     print("✓ Test case 2 passed: [2,3,4], target=6 -> [1,3]")
-    
+
     assert two_sum(numbers=[-1, 0], target=-1) == [1, 2], "Test case 3 failed"
     print("✓ Test case 3 passed: [-1,0], target=-1 -> [1,2]")
-    
+
     assert two_sum(numbers=[1, 2, 3, 4, 5], target=9) == [4, 5], "Test case 4 failed"
     print("✓ Test case 4 passed: [1,2,3,4,5], target=9 -> [4,5]")
-    
+
     assert two_sum(numbers=[5, 25, 75], target=100) == [2, 3], "Test case 5 failed"
     print("✓ Test case 5 passed: [5,25,75], target=100 -> [2,3]")
-    
+
     print("\n✅ All test cases passed!")

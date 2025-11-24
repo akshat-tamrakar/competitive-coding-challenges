@@ -37,17 +37,17 @@ def maxSubArray(nums):
 if __name__ == "__main__":
     assert maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]) == 6, "Test case 1 failed"
     print("✓ Test case 1 passed: [-2,1,-3,4,-1,2,1,-5,4] -> 6")
-    
+
     assert maxSubArray([1]) == 1, "Test case 2 failed"
     print("✓ Test case 2 passed: [1] -> 1")
-    
+
     assert maxSubArray([5, 4, -1, 7, 8]) == 23, "Test case 3 failed"
     print("✓ Test case 3 passed: [5,4,-1,7,8] -> 23")
-    
+
     assert maxSubArray([-1]) == -1, "Test case 4 failed"
     print("✓ Test case 4 passed: [-1] -> -1")
-    
+
     assert maxSubArray([-2, -1]) == -1, "Test case 5 failed"
     print("✓ Test case 5 passed: [-2,-1] -> -1")
-    
+
     print("\n✅ All test cases passed!")

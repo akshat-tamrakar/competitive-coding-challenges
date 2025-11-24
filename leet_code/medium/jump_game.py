@@ -54,23 +54,23 @@ def can_jump_2(nums):
 if __name__ == "__main__":
     assert can_jump_1([2, 3, 1, 1, 4]), "Test case 1 failed"
     print("✓ Test case 1 passed: [2,3,1,1,4] -> True")
-    
+
     assert not can_jump_1([3, 2, 1, 0, 4]), "Test case 2 failed"
     print("✓ Test case 2 passed: [3,2,1,0,4] -> False")
-    
+
     assert can_jump_1([2, 0, 1, 2]), "Test case 3 failed"
     print("✓ Test case 3 passed: [2,0,1,2] -> True")
-    
+
     assert can_jump_1([0]), "Test case 4 failed"
     print("✓ Test case 4 passed: [0] -> True")
-    
+
     assert can_jump_1([2, 0, 0]), "Test case 5 failed"
     print("✓ Test case 5 passed: [2,0,0] -> True")
-    
+
     assert can_jump_2([2, 3, 1, 1, 4]), "Test case 6 failed"
     print("✓ Test case 6 passed: can_jump_2 method -> True")
-    
+
     assert not can_jump_2([3, 2, 1, 0, 4]), "Test case 7 failed"
     print("✓ Test case 7 passed: can_jump_2 method -> False")
-    
+
     print("\n✅ All test cases passed!")
