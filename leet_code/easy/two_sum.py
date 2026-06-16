@@ -24,8 +24,6 @@ Constraints:
 - Only one valid answer exists.
 """
 
-from typing import Union, Any
-
 
 class Solution:
     @staticmethod
@@ -37,15 +35,6 @@ class Solution:
                 return [seen[complement], i]
             seen[num] = i
         return []
-
-    @staticmethod
-    def two_sum_2(nums: list[int], target: int) -> Union[tuple[Any, int], tuple[()]]:
-        seen_numbers_map = {}
-        for current_index, current_number in enumerate(nums):
-            if (required_number := target - current_number) in seen_numbers_map:
-                return seen_numbers_map[required_number], current_index
-            seen_numbers_map[current_number] = current_index
-        return ()
 
 
 if __name__ == "__main__":
